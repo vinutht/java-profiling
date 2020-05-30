@@ -32,7 +32,7 @@ docker exec --user "${JAVA_UID}":"${JAVA_GID}" "${CTN_ID}" sh -c "cd /tmp/perf-m
 docker cp ${CTN_ID}:/tmp/perf-${JAVA_PID}.map /tmp/perf-${PID}.map
 
 # We profile 15 seconds
-/usr/share/bcc/tools/profile -adf -p $PID 30 > $PID.profile
+/usr/share/bcc/tools/profile -adf -p $PID 300 > $PID.profile
 
 # Draw flamegraph
 /home/admin/Vinuth/FlameGraph-master/flamegraph.pl < $PID.profile --colors java --hash > $PID.svg
